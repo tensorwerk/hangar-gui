@@ -1,0 +1,19 @@
+.media {
+  background-color: #343a40;
+  padding: 10px;
+  .desc {
+    display: flex;
+    align-items: center;
+    padding: 0px 25px;
+  }
+  .repo-desc {
+    margin-bottom: 0.5rem;
+  }
+  .repo-update {
+    margin-bottom: 0.5rem;
+    color: #c7a580;
+  }
+  .commit {
+    margin-right: 10px;
+  }
+}

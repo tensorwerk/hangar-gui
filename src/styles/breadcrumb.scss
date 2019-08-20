@@ -1,0 +1,12 @@
+.breadcrumb {
+  background-color: transparent;
+  padding: 0px;
+
+  .breadcrumb-item,
+  .breadcrumb-item.active {
+    color: $white;
+    a {
+      color: $white;
+    }
+  }
+}

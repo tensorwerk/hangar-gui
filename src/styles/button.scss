@@ -1,0 +1,17 @@
+%custom-bg {
+  background-color: $primary-clr;
+}
+.btn-primary {
+  @extend %custom-bg;
+  border-color: $primary-clr;
+  border-radius: 0%;
+  &:hover,
+  &:focus {
+    background-color: $prmary-clr-hover;
+    border-color: $prmary-clr-hover;
+    box-shadow: none;
+  }
+}
+.btn-large {
+  padding: 10px 80px;
+}

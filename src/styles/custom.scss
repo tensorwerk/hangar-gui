@@ -1,0 +1,67 @@
+%dark {
+  background-color: $dark;
+}
+.right {
+  float: right;
+}
+.home-container {
+  padding: 10%;
+  .title {
+    font-size: 60px;
+  }
+  .desc {
+    font-size: 25px;
+    max-width: 450px;
+  }
+}
+.fab,
+.fas {
+  padding: 0px 5px;
+}
+
+.wrapper-container {
+  padding: 5% 10%;
+  .title-sec {
+    padding: 2%;
+    @extend %dark;
+  }
+  .title {
+    color: $white;
+    font-size: 25px;
+    font-weight: bold;
+  }
+  .body-sec {
+    margin-top: 20px;
+  }
+  .accordion {
+    .card {
+      border: none;
+      margin-bottom: 10px;
+      background-color: $primary-clr;
+      color: $black;
+    }
+    .card-body {
+      background-color: $primary-clr-light;
+    }
+  }
+}
+
+.dataset-container {
+  padding: 15px;
+  @extend %dark;
+}
+.link-name {
+  color: $white !important;
+  &:hover,
+  &:focus {
+    color: $white !important;
+  }
+}
+
+.home-container {
+  .content {
+    background: rgba(0, 0, 0, 0.5);
+    max-width: 500px;
+    padding: 25px;
+  }
+}

@@ -1,0 +1,19 @@
+.footer {
+  position: fixed;
+  bottom: 0%;
+  left: 0%;
+  width: 100%;
+  background-color: $dark;
+  padding: 10px;
+  font-size: 16px;
+  color: #757373;
+  .icon-group {
+    float: right;
+    a {
+      color: #757373 !important;
+      &:hover {
+        color: #757373 !important;
+      }
+    }
+  }
+}
