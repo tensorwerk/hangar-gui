@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
-import bgimage from "../assets/hangar1.png";
+import bgimage from "../assets/hangar.jpg";
 class Home extends Component {
   render() {
     return (
@@ -12,7 +12,7 @@ class Home extends Component {
             backgroundImage: `url(${bgimage})`,
             backgroundRepeat: "no-repeat",
             backgroundSize: "cover",
-            height: "100vh"
+            height: "calc(100vh - 100px)"
           }}
         >
           <div className="col content">

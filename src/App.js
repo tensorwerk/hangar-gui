@@ -1,5 +1,4 @@
 import React from "react";
-//import "./App.scss";
 
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
@@ -24,7 +23,7 @@ function App() {
       </Row>
       <Row>
         <Col>
-          <Route exact path="/home" component={Home} />
+          <Route path="/home" component={Home} />
           <Route exact path="/dashboard" component={DashboardComponent} />
           <Route
             exact
