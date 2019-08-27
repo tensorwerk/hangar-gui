@@ -1,5 +1,61 @@
+%tx-1 {
+  transition: 1s;
+}
 .navbar {
   .nav-link {
     font-size: 20px;
+  }
+}
+
+.mode-switcher {
+  position: relative;
+  height: 30px;
+  width: 70px;
+  margin-top: 7px;
+  margin-right: 30px;
+
+  input {
+    display: none;
+  }
+}
+
+.switch {
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background-color: $primary-clr;
+  border-radius: 20px;
+  display: flex;
+  justify-content: space-between;
+  @extend %tx-1;
+}
+
+img {
+  border-radius: 50%;
+  margin: 4px 5px;
+  width: 25px;
+}
+
+.dark {
+  background: $white;
+  @extend %tx-1;
+}
+
+.light {
+  background: transparent;
+  @extend %tx-1;
+}
+input:checked {
+  + .switch {
+    background-color: #b7b7b7;
+    > .dark {
+      background: transparent;
+    }
+    > .light {
+      background: $white;
+    }
   }
 }
