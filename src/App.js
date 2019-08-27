@@ -3,7 +3,7 @@ import React from "react";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import { Route } from "react-router-dom";
+import { Route, Switch, Redirect } from "react-router-dom";
 
 import Header from "./components/HeaderComponent";
 import Footer from "./components/FooterComponent";
@@ -23,19 +23,22 @@ function App() {
       </Row>
       <Row>
         <Col>
-          <Route path="/home" component={Home} />
-          <Route exact path="/dashboard" component={DashboardComponent} />
-          <Route
-            exact
-            path="/dashboard/:arraysetId"
-            component={ArraysetComponent}
-          />
-          <Route
-            exact
-            path="/dashboard/:arraysetId/:samplesId"
-            component={DatasamplesComponent}
-          />
-          <Route exact path="/faq" component={FAQComponent} />
+          <Switch>
+            <Route path="/home" component={Home} />
+            <Route exact path="/dashboard" component={DashboardComponent} />
+            <Route
+              exact
+              path="/dashboard/:arraysetId"
+              component={ArraysetComponent}
+            />
+            <Route
+              exact
+              path="/dashboard/:arraysetId/:samplesId"
+              component={DatasamplesComponent}
+            />
+            <Route exact path="/faq" component={FAQComponent} />
+            <Redirect from="/" to="/home" />
+          </Switch>
         </Col>
       </Row>
       <Row>
