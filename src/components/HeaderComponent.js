@@ -2,10 +2,10 @@ import React, { Component } from "react";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import logo from "../assets/cube-48.png";
+import logoLight from "../assets/cube-32.png";
 import lightSwitch from "../assets/sun-black-32.png";
 import darkSwitch from "../assets/moon-black-32.png";
 import { Link, NavLink } from "react-router-dom";
-// import { NavLink } from "react-router-dom";
 
 class Header extends Component {
   constructor(props) {
@@ -16,10 +16,12 @@ class Header extends Component {
     this.toggleDarkMode = this.toggleDarkMode.bind(this);
   }
 
-  toggleDarkMode(event) {
+  toggleDarkMode() {
+    const currentTheme = this.state.isDarkMode ? "light" : "dark";
     this.setState(state => ({
-      isDarkMode: !state.isDarkMode,
+      isDarkMode: !this.state.isDarkMode,
     }));
+    document.documentElement.setAttribute("theme", currentTheme);
   }
 
   render() {
@@ -27,7 +29,7 @@ class Header extends Component {
       <Navbar bg="dark" expand="lg" variant="dark">
         <Link to="/home" className="navbar-brand">
           <img
-            src={logo}
+            src={this.state.isDarkMode ? logo : logoLight}
             width="30"
             height="30"
             className="d-inline-block align-top"
