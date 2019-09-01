@@ -17,11 +17,12 @@ class Header extends Component {
   }
 
   toggleDarkMode() {
-    const currentTheme = this.state.isDarkMode ? "light" : "dark";
     this.setState(state => ({
       isDarkMode: !this.state.isDarkMode,
     }));
-    document.documentElement.setAttribute("theme", currentTheme);
+    this.state.isDarkMode
+      ? document.documentElement.setAttribute("theme", "light")
+      : document.documentElement.removeAttribute("theme");
   }
 
   render() {

@@ -1,86 +1,76 @@
-// Color system
+$light-text-clr: #5b5757; //body color
 
-$white: #fff;
-$white-100: #e3e5e8; //Text color on body
-$grey: #424955; //body clr
-$gray-100: #f8f9fa;
-$gray-200: #e9ecef;
-$gray-300: #dee2e6;
-$gray-400: #ced4da;
-$gray-500: #adb5bd;
-$gray-600: #6c757d;
-$gray-700: #495057;
 $gray-800: #ededed; //Nav and Footer color
-$gray-900: #212529;
 $black: #000;
 
-$gray-light: #5b5757;
-
-$blue: #007bff;
-$indigo: #6610f2;
-$purple: #776dee; //primary color
-$pink: #e83e8c;
-$red: #dc3545;
-$orange: #fd7e14;
-$yellow: #ffc107;
-$green: #28a745;
-$teal: #20c997;
-$cyan: #17a2b8;
-
-$primary-clr: #f5a540;
-$prmary-clr-hover: #e89122;
-
-$primary-clr-light: #e8c9a1;
-
-$primary: $blue;
-$secondary: $gray-600;
-$success: $green;
-$info: $cyan;
-$warning: $yellow;
-$danger: $red;
-$light: $gray-100;
 $dark: $gray-800;
 
-$theme-colors: () !default;
-// stylelint-disable-next-line scss/dollar-variable-default
-$theme-colors: map-merge(
-  (
-    "primary": $primary-clr,
-    "secondary": $secondary,
-    "success": $success,
-    "info": $info,
-    "warning": $warning,
-    "danger": $danger,
-    "light": $light,
-    "dark": $dark,
-  ),
-  $theme-colors
+$theme-colors: (
+  "primary": $primary-clr,
 );
 
-// Set a specific jump point for requesting color jumps
-$theme-color-interval: 8% !default;
-
-// The yiq lightness value that determines when the lightness of color changes from "dark" to "light". Acceptable values are between 0 and 255.
-$yiq-contrasted-threshold: 150 !default;
-
-// Customize the light and dark text colors for use in our YIQ color contrast function.
-$yiq-text-dark: $gray-900 !default;
-$yiq-text-light: $white !default;
-
 $body-bg: $white;
-$body-color: $gray-light;
+$body-color: $light-text-clr;
 
 // Navs
-$navbar-dark-color: #5b5757;
-$navbar-dark-hover-color: $primary-clr;
-$navbar-dark-active-color: $primary-clr;
+$navbar-dark-color: color-yiq($white);
+$navbar-dark-color: $light-text-clr;
 $navbar-dark-disabled-color: $white;
 $navbar-dark-toggler-icon-bg: str-replace(
   url("data:image/svg+xml,%3csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3e%3cpath stroke='#{$navbar-dark-color}' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e"),
   "#",
   "%23"
 ) !default;
-$navbar-dark-toggler-border-color: $black !default;
+$navbar-dark-toggler-border-color: $light-text-clr;
+
+.title-sec,
+.body-sec {
+  background-color: $gray-800 !important;
+  .title {
+    color: $light-text-clr;
+  }
+}
+.dataset-container {
+  background-color: $gray-800 !important;
+  .table {
+    color: $light-text-clr;
+    th,
+    td {
+      padding: 0px !important;
+    }
+  }
+}
+.home-container {
+  color: color-yiq($light-text-clr);
+}
+
+.footer {
+  background: $gray-800;
+}
+.media {
+  background: $gray-800;
+  color: $light-text-clr;
+  .repo-update {
+    color: #c27521;
+  }
+}
+.link-name {
+  color: $light-text-clr !important;
+}
+
+.breadcrumb-item,
+.breadcrumb-item.active {
+  color: $light-text-clr !important;
+  a {
+    color: $light-text-clr !important;
+  }
+}
+.btn-primary {
+  border-radius: 0% !important;
+}
+.btn-large {
+  padding: 10px 80px !important;
+}
 
 @import "~bootstrap/scss/bootstrap.scss";
 @import "~bootstrap/dist/css/bootstrap.min.css";
