@@ -1,6 +1,9 @@
 %dark {
   background-color: $dark;
 }
+.bg-dark {
+  @extend %dark;
+}
 .right {
   float: right;
 }
@@ -23,9 +26,9 @@
 }
 
 .wrapper-container {
-  padding: 5% 10%;
-  .title-sec {
-    padding: 2%;
+  padding: 3% 10%;
+  .search-sec {
+    padding: 1.5%;
     @extend %dark;
   }
   .title {
@@ -34,7 +37,7 @@
     font-weight: bold;
   }
   .body-sec {
-    margin-top: 20px;
+    margin-top: 3px;
   }
   .accordion {
     .card {
@@ -67,4 +70,9 @@
     max-width: 500px;
     padding: 25px;
   }
+}
+
+.create-repo-container {
+  @extend %dark;
+  padding: 5%;
 }
