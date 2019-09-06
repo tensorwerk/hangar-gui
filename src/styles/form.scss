@@ -1,0 +1,26 @@
+.form-control {
+  background-color: #424955 !important;
+  border-color: #424955 !important;
+  color: $white !important;
+  box-shadow: none !important;
+  &.focus,
+  &.active {
+    border-color: #424955 !important;
+    outline: 0 !important;
+  }
+  ::placeholder {
+    /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #8e9196;
+    opacity: 1; /* Firefox */
+  }
+
+  :-ms-input-placeholder {
+    /* Internet Explorer 10-11 */
+    color: #8e9196;
+  }
+
+  ::-ms-input-placeholder {
+    /* Microsoft Edge */
+    color: #8e9196;
+  }
+}
