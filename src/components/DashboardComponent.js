@@ -5,8 +5,16 @@ import Media from "react-bootstrap/Media";
 import repo from "../assets/repo-64.png";
 import commit from "../assets/commit.png";
 import branch from "../assets/branch.png";
-import OverlayTrigger from "react-bootstrap/OverlayTrigger";
-import Tooltip from "react-bootstrap/Tooltip";
+//import OverlayTrigger from "react-bootstrap/OverlayTrigger";
+import {
+  Tooltip,
+  OverlayTrigger,
+  Form,
+  FormControl,
+  InputGroup,
+  Col,
+  Row
+} from "react-bootstrap";
 
 class Dashboard extends Component {
   state = {};
@@ -14,9 +22,26 @@ class Dashboard extends Component {
   render() {
     return (
       <div className="wrapper-container">
-        <div className="title-sec">
-          <span className="title">REPOSITORIES</span>
-          <Button className="right">Create New</Button>
+        <p className="title">REPOSITORIES</p>
+        <div className="search-sec">
+          <Row>
+            <Col>
+              <Form.Control
+                type="text"
+                placeholder="Search for a repository"
+                aria-describedby="inputGroupPrepend"
+              />
+            </Col>
+
+            <Col className="">
+              <Button
+                className="right"
+                onClick={() => this.props.history.push("/createrepository")}
+              >
+                + New
+              </Button>
+            </Col>
+          </Row>
         </div>
         <div className="body-sec">
           <div className="row">

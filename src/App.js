@@ -12,6 +12,7 @@ import DashboardComponent from "./components/DashboardComponent";
 import FAQComponent from "./components/FAQComponent";
 import ArraysetComponent from "./components/ArraysetComponent";
 import DatasamplesComponent from "./components/DatasamplesComponent";
+import CreateRepoComponent from "./components/CreateRepoComponent";
 
 function App() {
   return (
@@ -37,8 +38,14 @@ function App() {
               component={DatasamplesComponent}
             />
             <Route exact path="/faq" component={FAQComponent} />
+            <Route
+              exact
+              path="/createrepository"
+              component={CreateRepoComponent}
+            />
             <Redirect from="/" to="/home" />
           </Switch>
+
         </Col>
       </Row>
       <Row>
