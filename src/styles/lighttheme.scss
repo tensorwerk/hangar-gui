@@ -22,13 +22,16 @@ $navbar-dark-toggler-icon-bg: str-replace(
 ) !default;
 $navbar-dark-toggler-border-color: $light-text-clr;
 
-.title-sec,
-.body-sec {
-  background-color: $gray-800 !important;
+.home-container {
+  color: color-yiq($light-text-clr);
+}
+
+.wrapper-container {
   .title {
     color: $light-text-clr;
   }
 }
+
 .dataset-container {
   background-color: $gray-800 !important;
   .table {
@@ -39,13 +42,7 @@ $navbar-dark-toggler-border-color: $light-text-clr;
     }
   }
 }
-.home-container {
-  color: color-yiq($light-text-clr);
-}
 
-.footer {
-  background: $gray-800;
-}
 .media {
   background: $gray-800;
   color: $light-text-clr;
@@ -55,20 +52,50 @@ $navbar-dark-toggler-border-color: $light-text-clr;
 }
 .link-name {
   color: $light-text-clr !important;
-}
-
-.breadcrumb-item,
-.breadcrumb-item.active {
-  color: $light-text-clr !important;
-  a {
+  &:hover,
+  &:focus {
     color: $light-text-clr !important;
   }
 }
+
+// Breadcrumbs
+.breadcrumb {
+  background-color: transparent !important;
+  padding: 0 !important;
+  img {
+    background: $dark;
+  }
+  .breadcrumb-item,
+  .breadcrumb-item.active {
+    color: $light-text-clr !important;
+    a {
+      color: $light-text-clr !important;
+    }
+  }
+}
+
+// Buttons
 .btn-primary {
   border-radius: 0% !important;
+  color: $white !important;
 }
 .btn-large {
   padding: 10px 80px !important;
+}
+
+.search-sec,
+.create-repo-container {
+  background-color: $gray-800 !important;
+}
+
+.form-control {
+  background-color: $white !important;
+  border-color: $white !important;
+  color: $light-text-clr !important;
+}
+
+.footer {
+  background: $gray-800;
 }
 
 @import "~bootstrap/scss/bootstrap.scss";

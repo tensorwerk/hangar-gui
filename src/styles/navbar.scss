@@ -9,7 +9,7 @@
 
 .mode-switcher {
   position: relative;
-  height: 30px;
+  height: 28px;
   width: 70px;
   margin-top: 7px;
   margin-right: 30px;
@@ -33,7 +33,7 @@
   @extend %tx-1;
 }
 
-img {
+.switch img {
   border-radius: 50%;
   margin: 4px 5px;
   width: 25px;

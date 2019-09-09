@@ -13,7 +13,7 @@ import {
   FormControl,
   InputGroup,
   Col,
-  Row
+  Row,
 } from "react-bootstrap";
 
 class Dashboard extends Component {
