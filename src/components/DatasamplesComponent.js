@@ -3,9 +3,25 @@ import Table from "react-bootstrap/Table";
 import Breadcrumb from "react-bootstrap/Breadcrumb";
 import repo from "../assets/repo-64.png";
 import { Link } from "react-router-dom";
+import * as api from "../utils/API";
 
 class Datasamples extends Component {
-  state = {};
+  state = {
+    samples: []
+  };
+
+  componentDidMount() {
+    this.getSamples();
+  }
+
+  getSamples() {
+    api.get("/sample?limit=1&offset=2").then(data =>
+      this.setState({
+        samples: data
+      })
+    );
+  }
+
   render() {
     return (
       <div className="wrapper-container">
@@ -36,25 +52,28 @@ class Datasamples extends Component {
         </div>
         <div className="body-sec">
           <div className="row">
-            <div className="col ">
-              <div className="dataset-container">
-                <Table className="datasample-table">
-                  <thead>
-                    <tr>
-                      <th>NAME</th>
-                      <th>SHAPE</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td style={{ width: "80%" }}>Lorem ipsum</td>
-                      <td style={{ width: "20%" }}> (1,2)</td>
-                    </tr>
-                  </tbody>
-                </Table>
+            {this.state.samples.map(item => (
+              <div className="col-md-4">
+                <div className="dataset-container">
+                  <Table className="datasample-table">
+                    <thead>
+                      <tr>
+                        <th>NAME</th>
+                        <th>SHAPE</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td style={{ width: "80%" }}>{item.name}</td>
+                        <td style={{ width: "20%" }}>
+                          {`[${item.shape.toString()}]`}
+                        </td>
+                      </tr>
+                    </tbody>
+                  </Table>
+                </div>
               </div>
-            </div>
-            <div className="col" />
+            ))}
           </div>
         </div>
       </div>

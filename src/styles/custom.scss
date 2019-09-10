@@ -38,6 +38,9 @@
   }
   .body-sec {
     margin-top: 3px;
+    > .row {
+      margin-top: 3px;
+    }
   }
   .accordion {
     .card {
@@ -54,6 +57,7 @@
 
 .dataset-container {
   padding: 15px;
+  margin-top: 3px;
   @extend %dark;
 }
 .link-name {
