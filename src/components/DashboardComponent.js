@@ -7,6 +7,7 @@ import commit from "../assets/commit.png";
 import branch from "../assets/branch.png";
 import * as api from "../utils/API";
 import { Tooltip, OverlayTrigger, Form, Col, Row } from "react-bootstrap";
+import timeago from "epoch-timeago";
 
 class Dashboard extends Component {
   state = {
@@ -22,10 +23,16 @@ class Dashboard extends Component {
       this.setState({
         repositories: data
       });
-      console.log(this.state.repositories);
+      //console.log(this.state.repositories);
     });
   }
   render() {
+    const TimeAgo = ({ time }) => (
+      <time dateTime={new Date(time).toISOString()}>{`Updated ${timeago(
+        time
+      )}`}</time>
+    );
+
     return (
       <div className="wrapper-container">
         <p className="title">REPOSITORIES</p>
@@ -95,7 +102,9 @@ class Dashboard extends Component {
                       </span>
                     </h5>
                     <p className="repo-desc">{item.desc}</p>
-                    <p className="repo-update">Updated 1 day ago</p>
+                    <p className="repo-update">
+                      <TimeAgo time={item.last_commit_date * 1000} />
+                    </p>
                   </Media.Body>
                 </Media>
               </div>
