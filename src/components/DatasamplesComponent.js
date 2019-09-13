@@ -53,7 +53,7 @@ class Datasamples extends Component {
         <div className="body-sec">
           <div className="row">
             {this.state.samples.map(item => (
-              <div className="col-md-4">
+              <div className="col-md-4" key={item.name}>
                 <div className="dataset-container">
                   <Table className="datasample-table">
                     <thead>

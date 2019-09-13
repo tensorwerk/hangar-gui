@@ -26,7 +26,7 @@
 }
 
 .wrapper-container {
-  padding: 3% 10%;
+  padding: 6% 10%;
   .search-sec {
     padding: 1.5%;
     @extend %dark;
@@ -79,4 +79,11 @@
 .create-repo-container {
   @extend %dark;
   padding: 5%;
+}
+
+.main-header {
+  position: fixed;
+  z-index: 10;
+  right: 0;
+  left: 0;
 }
