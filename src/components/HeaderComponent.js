@@ -8,26 +8,26 @@ import darkSwitch from "../assets/moon-black-32.png";
 import { Link, NavLink } from "react-router-dom";
 
 class Header extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isDarkMode: true,
-    };
-    this.toggleDarkMode = this.toggleDarkMode.bind(this);
-  }
+  state = {
+    isDarkMode: true,
+  };
 
-  toggleDarkMode() {
-    this.setState(state => ({
+  toggleDarkMode = () => {
+    this.setState({
       isDarkMode: !this.state.isDarkMode,
-    }));
+    });
     this.state.isDarkMode
       ? document.documentElement.setAttribute("theme", "light")
       : document.documentElement.removeAttribute("theme");
-  }
+  };
 
   render() {
     return (
-      <Navbar bg="dark" expand="lg" variant="dark">
+      <Navbar
+        bg="dark"
+        expand="lg"
+        variant={this.state.isDarkMode ? "dark" : "light"}
+      >
         <Link to="/home" className="navbar-brand">
           <img
             src={this.state.isDarkMode ? logo : logoLight}
