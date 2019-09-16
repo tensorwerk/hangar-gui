@@ -23,7 +23,6 @@ class Dashboard extends Component {
       this.setState({
         repositories: data
       });
-      //console.log(this.state.repositories);
     });
   }
   render() {
