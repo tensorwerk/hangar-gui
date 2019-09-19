@@ -8,7 +8,7 @@ body {
 }
 
 @import "./styles/darktheme.scss";
-[theme="light"] {
+[hangarTheme="light"] {
   @import "./styles//lighttheme.scss";
 }
 @import "./styles/custom.scss";

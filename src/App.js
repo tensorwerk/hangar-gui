@@ -14,46 +14,49 @@ import ArraysetComponent from "./components/ArraysetComponent";
 import DatasamplesComponent from "./components/DatasamplesComponent";
 import CreateRepoComponent from "./components/CreateRepoComponent";
 
+import { ThemeProvider } from "./context/theme-context";
+
 function App() {
   return (
-    <Container fluid="true" className="p-0">
-      <Row>
-        <Col>
-          <Header />
-        </Col>
-      </Row>
-      <Row>
-        <Col>
-          <Switch>
-            <Route path="/home" component={Home} />
-            <Route exact path="/dashboard" component={DashboardComponent} />
-            <Route
-              exact
-              path="/dashboard/:arraysetId"
-              component={ArraysetComponent}
-            />
-            <Route
-              exact
-              path="/dashboard/:arraysetId/:samplesId"
-              component={DatasamplesComponent}
-            />
-            <Route exact path="/faq" component={FAQComponent} />
-            <Route
-              exact
-              path="/createrepository"
-              component={CreateRepoComponent}
-            />
-            <Redirect from="/" to="/home" />
-          </Switch>
-
-        </Col>
-      </Row>
-      <Row>
-        <Col>
-          <Footer />
-        </Col>
-      </Row>
-    </Container>
+    <ThemeProvider>
+      <Container fluid="true" className="p-0">
+        <Row>
+          <Col>
+            <Header />
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            <Switch>
+              <Route path="/home" component={Home} />
+              <Route exact path="/dashboard" component={DashboardComponent} />
+              <Route
+                exact
+                path="/dashboard/:arraysetId"
+                component={ArraysetComponent}
+              />
+              <Route
+                exact
+                path="/dashboard/:arraysetId/:samplesId"
+                component={DatasamplesComponent}
+              />
+              <Route exact path="/faq" component={FAQComponent} />
+              <Route
+                exact
+                path="/createrepository"
+                component={CreateRepoComponent}
+              />
+              <Redirect from="/" to="/home" />
+            </Switch>
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            <Footer />
+          </Col>
+        </Row>
+      </Container>
+    </ThemeProvider>
   );
 }
 

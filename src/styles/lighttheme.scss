@@ -62,9 +62,9 @@ $navbar-dark-toggler-border-color: $light-text-clr;
 .breadcrumb {
   background-color: transparent !important;
   padding: 0 !important;
-  img {
-    background: $dark;
-  }
+  // img {
+  //   background: $dark;
+  // }
   .breadcrumb-item,
   .breadcrumb-item.active {
     color: $light-text-clr !important;
@@ -86,6 +86,12 @@ $navbar-dark-toggler-border-color: $light-text-clr;
 .search-sec,
 .create-repo-container {
   background-color: $gray-800 !important;
+  .fa,
+  .far,
+  .fas,
+  .fab {
+    color: $white !important;
+  }
 }
 
 .form-control {
@@ -94,8 +100,21 @@ $navbar-dark-toggler-border-color: $light-text-clr;
   color: $light-text-clr !important;
 }
 
+// icons
+
+.alert-custom {
+  color: $white !important;
+}
+
 .footer {
   background: $gray-800;
+  color: #757373;
+  .fa,
+  .far,
+  .fas,
+  .fab {
+    color: #757373 !important;
+  }
 }
 
 @import "~bootstrap/scss/bootstrap.scss";
