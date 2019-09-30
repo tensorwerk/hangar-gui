@@ -1,0 +1,121 @@
+$light-text-clr: #5b5757; //body color
+
+$gray-800: #ededed; //Nav and Footer color
+
+$dark: $gray-800;
+
+$theme-colors: (
+  "primary": $primary-clr,
+);
+
+$body-bg: $white;
+$body-color: $light-text-clr;
+
+// Navs
+$navbar-dark-color: color-yiq($white);
+$navbar-dark-color: $light-text-clr;
+$navbar-dark-disabled-color: $white;
+$navbar-dark-toggler-icon-bg: str-replace(
+  url("data:image/svg+xml,%3csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3e%3cpath stroke='#{$navbar-dark-color}' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e"),
+  "#",
+  "%23"
+) !default;
+$navbar-dark-toggler-border-color: $light-text-clr;
+
+.home-container {
+  color: color-yiq($light-text-clr);
+}
+
+.wrapper-container {
+  .title {
+    color: $light-text-clr;
+  }
+}
+
+.dataset-container {
+  background-color: $gray-800 !important;
+  .table {
+    color: $light-text-clr;
+    th,
+    td {
+      padding: 0px !important;
+    }
+  }
+}
+
+.media {
+  background: $gray-800;
+  color: $light-text-clr;
+  .repo-update {
+    color: #c27521;
+  }
+}
+.link-name {
+  color: $light-text-clr !important;
+  &:hover,
+  &:focus {
+    color: $light-text-clr !important;
+  }
+}
+
+// Breadcrumbs
+.breadcrumb {
+  background-color: transparent !important;
+  padding: 0 !important;
+  // img {
+  //   background: $dark;
+  // }
+  .breadcrumb-item,
+  .breadcrumb-item.active {
+    color: $light-text-clr !important;
+    a {
+      color: $light-text-clr !important;
+    }
+  }
+}
+
+// Buttons
+.btn-primary {
+  border-radius: 0% !important;
+  color: $white !important;
+}
+.btn-large {
+  padding: 10px 80px !important;
+}
+
+.search-sec,
+.create-repo-container {
+  background-color: $gray-800 !important;
+  .fa,
+  .far,
+  .fas,
+  .fab {
+    color: $white !important;
+  }
+}
+
+.form-control {
+  background-color: $white !important;
+  border-color: $white !important;
+  color: $light-text-clr !important;
+}
+
+// icons
+
+.alert-custom {
+  color: $white !important;
+}
+
+.footer {
+  background: $gray-800;
+  color: #757373;
+  .fa,
+  .far,
+  .fas,
+  .fab {
+    color: #757373 !important;
+  }
+}
+
+@import "~bootstrap/scss/bootstrap.scss";
+@import "~bootstrap/dist/css/bootstrap.min.css";

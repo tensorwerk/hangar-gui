@@ -1,75 +1,28 @@
 // Color system
-
 $white: #fff;
 $white-100: #e3e5e8; //Text color on body
 $grey: #424955; //body clr
-$gray-100: #f8f9fa;
-$gray-200: #e9ecef;
-$gray-300: #dee2e6;
-$gray-400: #ced4da;
-$gray-500: #adb5bd;
-$gray-600: #6c757d;
-$gray-700: #495057;
 $gray-800: #343a40; //Nav and Footer color
-$gray-900: #212529;
 $black: #000;
-
-$blue: #007bff;
-$indigo: #6610f2;
 $purple: #776dee; //primary color
-$pink: #e83e8c;
-$red: #dc3545;
-$orange: #fd7e14;
-$yellow: #ffc107;
-$green: #28a745;
-$teal: #20c997;
-$cyan: #17a2b8;
 
 $primary-clr: #f5a540;
 $prmary-clr-hover: #e89122;
 
 $primary-clr-light: #fbe8cf;
 
-$primary: $blue;
-$secondary: $gray-600;
-$success: $green;
-$info: $cyan;
-$warning: $yellow;
-$danger: $red;
-$light: $gray-100;
 $dark: $gray-800;
 
-$theme-colors: () !default;
-// stylelint-disable-next-line scss/dollar-variable-default
-$theme-colors: map-merge(
-  (
-    "primary": $primary,
-    "secondary": $secondary,
-    "success": $success,
-    "info": $info,
-    "warning": $warning,
-    "danger": $danger,
-    "light": $light,
-    "dark": $dark
-  ),
-  $theme-colors
+$theme-colors: (
+  "primary": $primary-clr,
+  "dark": $dark,
 );
-
-// Set a specific jump point for requesting color jumps
-$theme-color-interval: 8% !default;
-
-// The yiq lightness value that determines when the lightness of color changes from "dark" to "light". Acceptable values are between 0 and 255.
-$yiq-contrasted-threshold: 150 !default;
-
-// Customize the light and dark text colors for use in our YIQ color contrast function.
-$yiq-text-dark: $gray-900 !default;
-$yiq-text-light: $white !default;
 
 $body-bg: $grey;
 $body-color: $white-100;
 
 // Navs
-$navbar-dark-color: rgba($white, 0.45);
+$navbar-dark-color: $white;
 $navbar-dark-hover-color: $primary-clr;
 $navbar-dark-active-color: $primary-clr;
 $navbar-dark-disabled-color: $white;

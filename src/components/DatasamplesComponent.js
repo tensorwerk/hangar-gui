@@ -2,7 +2,9 @@ import React, { Component } from "react";
 import Table from "react-bootstrap/Table";
 import Breadcrumb from "react-bootstrap/Breadcrumb";
 import repo from "../assets/repo-64.png";
+import repoDark from "../assets/repo-dark.png";
 import { Link } from "react-router-dom";
+import { ThemeConsumer } from "../context/theme-context";
 import * as api from "../utils/API";
 
 class Datasamples extends Component {
@@ -28,13 +30,15 @@ class Datasamples extends Component {
 
   render() {
     return (
+     <ThemeConsumer>
+        {({ isDarkMode }) => (
       <div className="wrapper-container">
         <Breadcrumb>
           <img
             width={18}
             height={18}
             className="align-self-center mr-2"
-            src={repo}
+            src={isDarkMode ? repo : repoDark}
             alt="Generic placeholder"
           />
           <Link to="/dashboard" className="breadcrumb-item">
@@ -78,8 +82,8 @@ class Datasamples extends Component {
               </div>
             ))}
           </div>
-        </div>
-      </div>
+        )}
+      </ThemeConsumer>
     );
   }
 }

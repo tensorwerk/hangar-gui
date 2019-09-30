@@ -1,11 +1,16 @@
 body {
   margin: 0;
+  padding: 0;
   font-family: "Roboto Condensed", sans-serif !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
 @import "./styles/darktheme.scss";
+[hangarTheme="light"] {
+  @import "./styles//lighttheme.scss";
+}
 @import "./styles/custom.scss";
 @import "./styles/navbar.scss";
 @import "./styles/footer.scss";

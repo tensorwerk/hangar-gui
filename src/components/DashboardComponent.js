@@ -3,11 +3,15 @@ import { Link } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import Media from "react-bootstrap/Media";
 import repo from "../assets/repo-64.png";
+import repoDark from "../assets/repo-dark.png";
 import commit from "../assets/commit.png";
+import commitDark from "../assets/commit-dark.png";
 import branch from "../assets/branch.png";
+import branchDark from "../assets/branch-dark.png";
 import * as api from "../utils/API";
 import { Tooltip, OverlayTrigger, Form, Col, Row } from "react-bootstrap";
 import timeago from "epoch-timeago";
+import { ThemeConsumer } from "../context/theme-context";
 
 class Dashboard extends Component {
   state = {
@@ -32,17 +36,19 @@ class Dashboard extends Component {
       )}`}</time>
     );
     return (
-      <div className="wrapper-container">
-        <p className="title">REPOSITORIES</p>
-        <div className="search-sec">
-          <Row>
-            <Col>
-              <Form.Control
-                type="text"
-                placeholder="Search for a repository"
-                aria-describedby="inputGroupPrepend"
-              />
-            </Col>
+      <ThemeConsumer>
+        {({ isDarkMode }) => (
+          <div className="wrapper-container">
+            <p className="title">REPOSITORIES</p>
+            <div className="search-sec">
+              <Row>
+                <Col>
+                  <Form.Control
+                    type="text"
+                    placeholder="Search for a repository"
+                    aria-describedby="inputGroupPrepend"
+                  />
+                </Col>
 
             <Col className="">
               <Button
@@ -63,7 +69,7 @@ class Dashboard extends Component {
                     width={64}
                     height={64}
                     className="align-self-center mr-3"
-                    src={repo}
+                     src={isDarkMode ? repo : repoDark}
                     alt="Repo"
                   />
                   <Media.Body>
@@ -82,7 +88,7 @@ class Dashboard extends Component {
                           overlay={<Tooltip>Commits</Tooltip>}
                         >
                           <span className="">
-                            <img src={commit} alt="commit" />
+                            <img src={isDarkMode ? commit : commitDark} alt="commit" />
                             <span className="commit">
                               {item.total_commit_count}
                             </span>
@@ -95,7 +101,7 @@ class Dashboard extends Component {
                           overlay={<Tooltip>Branches</Tooltip>}
                         >
                           <span className="">
-                            <img src={branch} alt="branch" />
+                            <img src={isDarkMode ? branch : branchDark} alt="branch" />
                             <span>{item.branch_count}</span>
                           </span>
                         </OverlayTrigger>
@@ -112,6 +118,8 @@ class Dashboard extends Component {
           ))}
         </div>
       </div>
+   )}
+      </ThemeConsumer>
     );
   }
 }

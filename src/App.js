@@ -14,8 +14,11 @@ import ArraysetComponent from "./components/ArraysetComponent";
 import DatasamplesComponent from "./components/DatasamplesComponent";
 import CreateRepoComponent from "./components/CreateRepoComponent";
 
+import { ThemeProvider } from "./context/theme-context";
+
 function App() {
   return (
+   <ThemeProvider>
     <Container fluid="true" className="p-0">
       <Row className="main-header">
         <Col>
@@ -53,6 +56,7 @@ function App() {
         </Col>
       </Row>
     </Container>
+  </ThemeProvider>
   );
 }
 
