@@ -8,23 +8,33 @@ import commit from "../assets/commit.png";
 import commitDark from "../assets/commit-dark.png";
 import branch from "../assets/branch.png";
 import branchDark from "../assets/branch-dark.png";
-//import OverlayTrigger from "react-bootstrap/OverlayTrigger";
-import {
-  Tooltip,
-  OverlayTrigger,
-  Form,
-  FormControl,
-  InputGroup,
-  Col,
-  Row,
-} from "react-bootstrap";
-
+import * as api from "../utils/API";
+import { Tooltip, OverlayTrigger, Form, Col, Row } from "react-bootstrap";
+import timeago from "epoch-timeago";
 import { ThemeConsumer } from "../context/theme-context";
 
 class Dashboard extends Component {
-  state = {};
+  state = {
+    repositories: []
+  };
 
+  componentDidMount() {
+    this.getRepositories();
+  }
+
+  getRepositories() {
+    api.get("/repository").then(data => {
+      this.setState({
+        repositories: data
+      });
+    });
+  }
   render() {
+    const TimeAgo = ({ time }) => (
+      <time dateTime={new Date(time).toISOString()}>{`Updated ${timeago(
+        time
+      )}`}</time>
+    );
     return (
       <ThemeConsumer>
         {({ isDarkMode }) => (
@@ -40,75 +50,75 @@ class Dashboard extends Component {
                   />
                 </Col>
 
-                <Col className="">
-                  <Button
-                    className="right"
-                    onClick={() => this.props.history.push("/createrepository")}
-                  >
-                    + New
-                  </Button>
-                </Col>
-              </Row>
-            </div>
-            <div className="body-sec">
-              <div className="row">
-                <div className="col">
-                  <Media>
-                    <img
-                      width={64}
-                      height={64}
-                      className="align-self-center mr-3"
-                      src={isDarkMode ? repo : repoDark}
-                      alt="Repo"
-                    />
-                    <Media.Body>
-                      <h5>
-                        <Link className="link-name" to="/dashboard/arrayset">
-                          Hangar/example-template1
-                        </Link>
+            <Col className="">
+              <Button
+                className="right"
+                onClick={() => this.props.history.push("/createrepository")}
+              >
+                + New
+              </Button>
+            </Col>
+          </Row>
+        </div>
+        <div className="body-sec">
+          {this.state.repositories.map(item => (
+            <div className="row" key={item.repo_name}>
+              <div className="col">
+                <Media>
+                  <img
+                    width={64}
+                    height={64}
+                    className="align-self-center mr-3"
+                     src={isDarkMode ? repo : repoDark}
+                    alt="Repo"
+                  />
+                  <Media.Body>
+                    <h5>
+                      <Link
+                        className="link-name"
+                        to={`/dashboard/${item.repo_name}`}
+                      >
+                        {item.repo_name}
+                      </Link>
 
-                        <span className=" desc right">
-                          <OverlayTrigger
-                            key={2}
-                            placement="top"
-                            overlay={<Tooltip>Commits</Tooltip>}
-                          >
-                            <span className="">
-                              <img
-                                src={isDarkMode ? commit : commitDark}
-                                alt="commit"
-                              />
-                              <span className="commit">2</span>
+                      <span className=" desc right">
+                        <OverlayTrigger
+                          key={2}
+                          placement="top"
+                          overlay={<Tooltip>Commits</Tooltip>}
+                        >
+                          <span className="">
+                            <img src={isDarkMode ? commit : commitDark} alt="commit" />
+                            <span className="commit">
+                              {item.total_commit_count}
                             </span>
-                          </OverlayTrigger>
+                          </span>
+                        </OverlayTrigger>
 
-                          <OverlayTrigger
-                            key={1}
-                            placement="top"
-                            overlay={<Tooltip>Branches</Tooltip>}
-                          >
-                            <span className="">
-                              <img
-                                src={isDarkMode ? branch : branchDark}
-                                alt="branch"
-                              />
-                              <span>3</span>
-                            </span>
-                          </OverlayTrigger>
-                        </span>
-                      </h5>
-                      <p className="repo-desc">
-                        Cras sit amet nibh libero, in gravida nulla. Nulla vel
-                        metus scelerisque ante sollicitudin commodo.
-                      </p>
-                      <p className="repo-update">Updated 1 day ago</p>
-                    </Media.Body>
-                  </Media>
-                </div>
+                        <OverlayTrigger
+                          key={1}
+                          placement="top"
+                          overlay={<Tooltip>Branches</Tooltip>}
+                        >
+                          <span className="">
+                            <img src={isDarkMode ? branch : branchDark} alt="branch" />
+                            <span>{item.branch_count}</span>
+                          </span>
+                        </OverlayTrigger>
+                      </span>
+                    </h5>
+                    <p className="repo-desc">{item.desc}</p>
+                    <p className="repo-update">
+                      <TimeAgo time={item.last_commit_time * 1000} />
+                    </p>
+                  </Media.Body>
+                </Media>
               </div>
             </div>
-          </div>
-        )}
+          ))}
+        </div>
+      </div>
+   )}
       </ThemeConsumer>
     );
   }
