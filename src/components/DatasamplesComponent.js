@@ -15,11 +15,15 @@ class Datasamples extends Component {
   }
 
   getSamples() {
-    api.get("/sample?limit=1&offset=2").then(data =>
-      this.setState({
-        samples: data
-      })
-    );
+    api
+      .get(
+        `/sample?repo_name=${this.props.match.params.repoId}&arrayset_name=${this.props.match.params.arraysetId}&branch_name=master&limit=4&offset=50`
+      )
+      .then(data => {
+        this.setState({
+          samples: data
+        });
+      });
   }
 
   render() {
@@ -36,11 +40,14 @@ class Datasamples extends Component {
           <Link to="/dashboard" className="breadcrumb-item">
             Repositories
           </Link>
-          <Link to="/dashboard/arrayset" className="breadcrumb-item">
+          <Link
+            to={`/dashboard/${this.props.match.params.repoId}`}
+            className="breadcrumb-item"
+          >
             Arraysets
           </Link>
           <Link
-            to="/dashboard/arrayset/samples"
+            to={`/dashboard/${this.props.match.params.repoId}/${this.props.match.params.arraysetId}/samples`}
             className="breadcrumb-item"
             active="true"
           >
@@ -53,21 +60,17 @@ class Datasamples extends Component {
         <div className="body-sec">
           <div className="row">
             {this.state.samples.map(item => (
-              <div className="col-md-4" key={item.name}>
+              <div className="col-md-4" key={item.arrayset_name}>
                 <div className="dataset-container">
                   <Table className="datasample-table">
                     <thead>
                       <tr>
                         <th>NAME</th>
-                        <th>SHAPE</th>
                       </tr>
                     </thead>
                     <tbody>
                       <tr>
-                        <td style={{ width: "80%" }}>{item.name}</td>
-                        <td style={{ width: "20%" }}>
-                          {`[${item.shape.toString()}]`}
-                        </td>
+                        <td style={{ width: "80%" }}>{item.arrayset_name}</td>
                       </tr>
                     </tbody>
                   </Table>

@@ -31,7 +31,6 @@ class Dashboard extends Component {
         time
       )}`}</time>
     );
-
     return (
       <div className="wrapper-container">
         <p className="title">REPOSITORIES</p>
@@ -57,7 +56,7 @@ class Dashboard extends Component {
         </div>
         <div className="body-sec">
           {this.state.repositories.map(item => (
-            <div className="row" key={item.name}>
+            <div className="row" key={item.repo_name}>
               <div className="col">
                 <Media>
                   <img
@@ -71,9 +70,9 @@ class Dashboard extends Component {
                     <h5>
                       <Link
                         className="link-name"
-                        to={`/dashboard/${item.name}`}
+                        to={`/dashboard/${item.repo_name}`}
                       >
-                        {item.name}
+                        {item.repo_name}
                       </Link>
 
                       <span className=" desc right">
@@ -84,7 +83,9 @@ class Dashboard extends Component {
                         >
                           <span className="">
                             <img src={commit} alt="commit" />
-                            <span className="commit">{item.commit_count}</span>
+                            <span className="commit">
+                              {item.total_commit_count}
+                            </span>
                           </span>
                         </OverlayTrigger>
 
@@ -102,7 +103,7 @@ class Dashboard extends Component {
                     </h5>
                     <p className="repo-desc">{item.desc}</p>
                     <p className="repo-update">
-                      <TimeAgo time={item.last_commit_date * 1000} />
+                      <TimeAgo time={item.last_commit_time * 1000} />
                     </p>
                   </Media.Body>
                 </Media>

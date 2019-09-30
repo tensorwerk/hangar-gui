@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Button from "react-bootstrap/Button";
 import { Form, Alert } from "react-bootstrap";
 import { CopyToClipboard } from "react-copy-to-clipboard";
-import * as api from "../utils/API";
+//import * as api from "../utils/API";
 
 class CreateRepo extends Component {
   constructor() {
@@ -13,10 +13,7 @@ class CreateRepo extends Component {
 
   createRepository(event) {
     event.preventDefault();
-    const data = new FormData(event.target);
-    console.log(data);
-    debugger;
-    //api.post("/repository", data).then(res => console.log(res));
+    //const data = new FormData(event.target);
   }
 
   render() {
