@@ -17,7 +17,7 @@ import CreateRepoComponent from "./components/CreateRepoComponent";
 function App() {
   return (
     <Container fluid="true" className="p-0">
-      <Row>
+      <Row className="main-header">
         <Col>
           <Header />
         </Col>
@@ -29,12 +29,12 @@ function App() {
             <Route exact path="/dashboard" component={DashboardComponent} />
             <Route
               exact
-              path="/dashboard/:arraysetId"
+              path="/dashboard/:repoId"
               component={ArraysetComponent}
             />
             <Route
               exact
-              path="/dashboard/:arraysetId/:samplesId"
+              path="/dashboard/:repoId/:arraysetId/:samplesId"
               component={DatasamplesComponent}
             />
             <Route exact path="/faq" component={FAQComponent} />
@@ -45,7 +45,6 @@ function App() {
             />
             <Redirect from="/" to="/home" />
           </Switch>
-
         </Col>
       </Row>
       <Row>

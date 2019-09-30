@@ -26,7 +26,7 @@
 }
 
 .wrapper-container {
-  padding: 3% 10%;
+  padding: 6% 10%;
   .search-sec {
     padding: 1.5%;
     @extend %dark;
@@ -38,6 +38,9 @@
   }
   .body-sec {
     margin-top: 3px;
+    > .row {
+      margin-top: 3px;
+    }
   }
   .accordion {
     .card {
@@ -54,6 +57,7 @@
 
 .dataset-container {
   padding: 15px;
+  margin-top: 3px;
   @extend %dark;
 }
 .link-name {
@@ -75,4 +79,11 @@
 .create-repo-container {
   @extend %dark;
   padding: 5%;
+}
+
+.main-header {
+  position: fixed;
+  z-index: 10;
+  right: 0;
+  left: 0;
 }

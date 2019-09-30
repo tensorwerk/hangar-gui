@@ -12,7 +12,7 @@ class Home extends Component {
             backgroundImage: `url(${bgimage})`,
             backgroundRepeat: "no-repeat",
             backgroundSize: "cover",
-            height: "calc(100vh - 100px)"
+            height: "calc(100vh)"
           }}
         >
           <div className="col content">

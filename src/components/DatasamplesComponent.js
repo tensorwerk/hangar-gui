@@ -3,9 +3,29 @@ import Table from "react-bootstrap/Table";
 import Breadcrumb from "react-bootstrap/Breadcrumb";
 import repo from "../assets/repo-64.png";
 import { Link } from "react-router-dom";
+import * as api from "../utils/API";
 
 class Datasamples extends Component {
-  state = {};
+  state = {
+    samples: []
+  };
+
+  componentDidMount() {
+    this.getSamples();
+  }
+
+  getSamples() {
+    api
+      .get(
+        `/sample?repo_name=${this.props.match.params.repoId}&arrayset_name=${this.props.match.params.arraysetId}&branch_name=master&limit=4&offset=50`
+      )
+      .then(data => {
+        this.setState({
+          samples: data
+        });
+      });
+  }
+
   render() {
     return (
       <div className="wrapper-container">
@@ -20,11 +40,14 @@ class Datasamples extends Component {
           <Link to="/dashboard" className="breadcrumb-item">
             Repositories
           </Link>
-          <Link to="/dashboard/arrayset" className="breadcrumb-item">
+          <Link
+            to={`/dashboard/${this.props.match.params.repoId}`}
+            className="breadcrumb-item"
+          >
             Arraysets
           </Link>
           <Link
-            to="/dashboard/arrayset/samples"
+            to={`/dashboard/${this.props.match.params.repoId}/${this.props.match.params.arraysetId}/samples`}
             className="breadcrumb-item"
             active="true"
           >
@@ -36,25 +59,24 @@ class Datasamples extends Component {
         </div>
         <div className="body-sec">
           <div className="row">
-            <div className="col ">
-              <div className="dataset-container">
-                <Table className="datasample-table">
-                  <thead>
-                    <tr>
-                      <th>NAME</th>
-                      <th>SHAPE</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td style={{ width: "80%" }}>Lorem ipsum</td>
-                      <td style={{ width: "20%" }}> (1,2)</td>
-                    </tr>
-                  </tbody>
-                </Table>
+            {this.state.samples.map(item => (
+              <div className="col-md-4" key={item.arrayset_name}>
+                <div className="dataset-container">
+                  <Table className="datasample-table">
+                    <thead>
+                      <tr>
+                        <th>NAME</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td style={{ width: "80%" }}>{item.arrayset_name}</td>
+                      </tr>
+                    </tbody>
+                  </Table>
+                </div>
               </div>
-            </div>
-            <div className="col" />
+            ))}
           </div>
         </div>
       </div>
