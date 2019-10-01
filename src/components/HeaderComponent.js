@@ -2,9 +2,9 @@ import React from "react";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import logo from "../assets/cube-48.png";
-import logoLight from "../assets/cube-32.png";
-import lightSwitch from "../assets/sun-black-32.png";
-import darkSwitch from "../assets/moon-black-32.png";
+import logoLight from "../assets/cube-light-theme-48.png";
+import lightSwitch from "../assets/sun-dark-theme-24.png";
+import darkSwitch from "../assets/moon-light-theme-24.png";
 import { Link, NavLink } from "react-router-dom";
 import { ThemeConsumer } from "../context/theme-context";
 
