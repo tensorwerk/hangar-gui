@@ -14,10 +14,14 @@ import timeago from "epoch-timeago";
 import { ThemeConsumer } from "../context/theme-context";
 
 class Dashboard extends Component {
+  constructor() {
+    super();
+    this.generateUpdateList = this.generateUpdateList.bind(this);
+  }
   state = {
-    repositories: []
+    repositories: [],
+    searchedList: []
   };
-
   componentDidMount() {
     this.getRepositories();
   }
@@ -25,9 +29,21 @@ class Dashboard extends Component {
   getRepositories() {
     api.get("/repository").then(data => {
       this.setState({
-        repositories: data
+        repositories: data,
+        searchedList: data
       });
     });
+  }
+
+  generateUpdateList(event) {
+    var updatedList = this.state.repositories;
+    updatedList = updatedList.filter(item => {
+      debugger;
+      let itemName = item.repo_name.toLowerCase();
+      let searchString = event.target.value.toLowerCase();
+      return itemName.search(searchString) === 0; //'0' when strings match, and '-1' when they don't match
+    });
+    this.setState({ searchedList: updatedList });
   }
   render() {
     const TimeAgo = ({ time }) => (
@@ -43,11 +59,14 @@ class Dashboard extends Component {
             <div className="search-sec">
               <Row>
                 <Col>
-                  <Form.Control
-                    type="text"
-                    placeholder="Search for a repository"
-                    aria-describedby="inputGroupPrepend"
-                  />
+                  <Form>
+                    <Form.Control
+                      type="text"
+                      placeholder="Search for a repository"
+                      aria-describedby="inputGroupPrepend"
+                      onChange={this.generateUpdateList}
+                    />
+                  </Form>
                 </Col>
 
                 <Col className="">
@@ -61,67 +80,73 @@ class Dashboard extends Component {
               </Row>
             </div>
             <div className="body-sec">
-              {this.state.repositories.map(item => (
-                <div className="row" key={item.repo_name}>
-                  <div className="col">
-                    <Media>
-                      <img
-                        width={64}
-                        height={64}
-                        className="align-self-center mr-3"
-                        src={isDarkMode ? repo : repoDark}
-                        alt="Repo"
-                      />
-                      <Media.Body>
-                        <h5>
-                          <Link
-                            className="link-name"
-                            to={`/dashboard/${item.repo_name}`}
-                          >
-                            {item.repo_name}
-                          </Link>
-
-                          <span className=" desc right">
-                            <OverlayTrigger
-                              key={2}
-                              placement="top"
-                              overlay={<Tooltip>Commits</Tooltip>}
+              {this.state.searchedList.length !== 0 ? (
+                this.state.searchedList.map(item => (
+                  <div className="row" key={item.repo_name}>
+                    <div className="col">
+                      <Media>
+                        <img
+                          width={64}
+                          height={64}
+                          className="align-self-center mr-3"
+                          src={isDarkMode ? repo : repoDark}
+                          alt="Repo"
+                        />
+                        <Media.Body>
+                          <h5>
+                            <Link
+                              className="link-name"
+                              to={`/dashboard/${item.repo_name}`}
                             >
-                              <span className="">
-                                <img
-                                  src={isDarkMode ? commit : commitDark}
-                                  alt="commit"
-                                />
-                                <span className="commit">
-                                  {item.total_commit_count}
+                              {item.repo_name}
+                            </Link>
+
+                            <span className=" desc right">
+                              <OverlayTrigger
+                                key={2}
+                                placement="top"
+                                overlay={<Tooltip>Commits</Tooltip>}
+                              >
+                                <span className="">
+                                  <img
+                                    src={isDarkMode ? commit : commitDark}
+                                    alt="commit"
+                                  />
+                                  <span className="commit">
+                                    {item.total_commit_count}
+                                  </span>
                                 </span>
-                              </span>
-                            </OverlayTrigger>
+                              </OverlayTrigger>
 
-                            <OverlayTrigger
-                              key={1}
-                              placement="top"
-                              overlay={<Tooltip>Branches</Tooltip>}
-                            >
-                              <span className="">
-                                <img
-                                  src={isDarkMode ? branch : branchDark}
-                                  alt="branch"
-                                />
-                                <span>{item.branch_count}</span>
-                              </span>
-                            </OverlayTrigger>
-                          </span>
-                        </h5>
-                        <p className="repo-desc">{item.desc}</p>
-                        <p className="repo-update">
-                          <TimeAgo time={item.last_commit_time * 1000} />
-                        </p>
-                      </Media.Body>
-                    </Media>
+                              <OverlayTrigger
+                                key={1}
+                                placement="top"
+                                overlay={<Tooltip>Branches</Tooltip>}
+                              >
+                                <span className="">
+                                  <img
+                                    src={isDarkMode ? branch : branchDark}
+                                    alt="branch"
+                                  />
+                                  <span>{item.branch_count}</span>
+                                </span>
+                              </OverlayTrigger>
+                            </span>
+                          </h5>
+                          <p className="repo-desc">{item.desc}</p>
+                          <p className="repo-update">
+                            <TimeAgo time={item.last_commit_time * 1000} />
+                          </p>
+                        </Media.Body>
+                      </Media>
+                    </div>
                   </div>
+                ))
+              ) : (
+                <div className="not-found-block">
+                  Sorry, we couldn't find any matches!
                 </div>
-              ))}
+              )}
             </div>
           </div>
         )}

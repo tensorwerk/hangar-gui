@@ -5,7 +5,7 @@ $gray-800: #ededed; //Nav and Footer color
 $dark: $gray-800;
 
 $theme-colors: (
-  "primary": $primary-clr,
+  "primary": $primary-clr
 );
 
 $body-bg: $white;
@@ -104,6 +104,10 @@ $navbar-dark-toggler-border-color: $light-text-clr;
 
 .alert-custom {
   color: $white !important;
+}
+
+.not-found-block {
+  color: $light-text-clr;
 }
 
 .footer {
