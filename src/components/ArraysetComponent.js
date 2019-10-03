@@ -52,7 +52,7 @@ class Arrayset extends Component {
             <div className="title-sec">
               <span className="title">ARRAYSETS</span>
             </div>
-            <div className="body-sec">
+            <div className="arrayset-container body-sec">
               <div className="row">
                 {this.state.arraysets.map(item => (
                   <div className="col-md-6" key={item.arrayset_name}>

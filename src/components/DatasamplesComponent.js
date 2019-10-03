@@ -61,28 +61,28 @@ class Datasamples extends Component {
             <div className="title-sec">
               <span className="title">SAMPLES</span>
             </div>
-            <div className="body-sec">
+            <div className="datasamples-container body-sec">
               <div className="row">
-                {this.state.samples.map(item => (
-                  <div className="col-md-4" key={item.arrayset_name}>
-                    <div className="dataset-container">
-                      <Table className="datasample-table">
-                        <thead>
-                          <tr>
-                            <th>NAME</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <td style={{ width: "80%" }}>
-                              {item.arrayset_name}
-                            </td>
-                          </tr>
-                        </tbody>
-                      </Table>
+                {this.state.samples.map(item =>
+                  item.sample_names.map(sampleName => (
+                    <div className="col-md-4" key={sampleName}>
+                      <div className="dataset-container">
+                        <Table className="datasample-table">
+                          <thead>
+                            <tr>
+                              <th>NAME</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td style={{ width: "80%" }}>{sampleName}</td>
+                            </tr>
+                          </tbody>
+                        </Table>
+                      </div>
                     </div>
-                  </div>
-                ))}
+                  ))
+                )}
               </div>
             </div>
           </div>

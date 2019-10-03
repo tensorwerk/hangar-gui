@@ -26,7 +26,7 @@
 }
 
 .wrapper-container {
-  padding: 6% 10%;
+  padding: 3% 10%;
   .search-sec {
     padding: 1.5%;
     @extend %dark;
@@ -57,7 +57,6 @@
 
 .dataset-container {
   padding: 15px;
-  margin-top: 3px;
   @extend %dark;
 }
 .link-name {
@@ -82,8 +81,15 @@
 }
 
 .main-header {
-  position: fixed;
+  position: relative;
   z-index: 10;
   right: 0;
   left: 0;
+}
+.datasamples-container .col-md-4 {
+  padding: 15px;
+}
+
+.arrayset-container .col-md-6 {
+  padding: 15px;
 }
