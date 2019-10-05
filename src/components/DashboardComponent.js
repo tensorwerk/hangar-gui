@@ -9,9 +9,10 @@ import commitDark from "../assets/commit-light-theme-16.png";
 import branch from "../assets/branch.png";
 import branchDark from "../assets/branch-light-theme-16.png";
 import * as api from "../utils/API";
-import { Tooltip, OverlayTrigger, Form, Col, Row } from "react-bootstrap";
+import { Tooltip, OverlayTrigger, Col, Row } from "react-bootstrap";
 import timeago from "epoch-timeago";
 import { ThemeConsumer } from "../context/theme-context";
+import Search from "../components/SearchComponent";
 
 class Dashboard extends Component {
   constructor() {
@@ -58,16 +59,10 @@ class Dashboard extends Component {
             <p className="title">REPOSITORIES</p>
             <div className="search-sec">
               <Row>
-                <Col>
-                  <Form>
-                    <Form.Control
-                      type="text"
-                      placeholder="Search for a repository"
-                      aria-describedby="inputGroupPrepend"
-                      onChange={this.generateUpdateList}
-                    />
-                  </Form>
-                </Col>
+                <Search
+                  placeholder="Search for repositories"
+                  searchItem={this.generateUpdateList}
+                ></Search>
 
                 <Col className="">
                   <Button
@@ -79,6 +74,7 @@ class Dashboard extends Component {
                 </Col>
               </Row>
             </div>
+
             <div className="body-sec">
               {this.state.searchedList.length !== 0 ? (
                 this.state.searchedList.map(item => (

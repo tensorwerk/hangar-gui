@@ -1,13 +1,18 @@
 import React, { Component } from "react";
 import Table from "react-bootstrap/Table";
-import Breadcrumb from "react-bootstrap/Breadcrumb";
+import { Breadcrumb, Row } from "react-bootstrap";
 import repo from "../assets/repo-64.png";
 import repoDark from "../assets/repo-light-theme-64.png";
 import { Link } from "react-router-dom";
 import { ThemeConsumer } from "../context/theme-context";
 import * as api from "../utils/API";
+import Search from "../components/SearchComponent";
 
 class Datasamples extends Component {
+  constructor() {
+    super();
+    this.generateUpdatedSampleList = this.generateUpdatedSampleList.bind(this);
+  }
   state = {
     samples: []
   };
@@ -26,6 +31,9 @@ class Datasamples extends Component {
           samples: data
         });
       });
+  }
+  generateUpdatedSampleList() {
+    //Api for sample search goes here..
   }
 
   render() {
@@ -60,6 +68,14 @@ class Datasamples extends Component {
             </Breadcrumb>
             <div className="title-sec">
               <span className="title">SAMPLES</span>
+            </div>
+            <div className="search-sec">
+              <Row>
+                <Search
+                  placeholder="Search for samples"
+                  searchItem={this.generateUpdatedSampleList}
+                ></Search>
+              </Row>
             </div>
             <div className="body-sec">
               <div className="row">
