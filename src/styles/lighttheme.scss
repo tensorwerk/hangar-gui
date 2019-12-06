@@ -30,8 +30,59 @@ $navbar-dark-toggler-border-color: $light-text-clr;
   .title {
     color: $light-text-clr;
   }
+  .sideBar{
+    background-color: $gray-800 !important;
+    h1{
+      color:black;
+    }
+    h2{
+      color:black;
+    }
+  }
 }
-
+.select-branch
+{
+  button{
+    color:black;
+    background-color: $gray-800 !important;
+    border:none;
+    text-align:left;
+    font-size:20px;
+    padding-left:24px;
+  }
+  button:hover,button:focus{
+    background-color: $gray-800 !important;
+    opacity:0.9;
+    box-shadow:none!important;
+    color:black;
+    border:none;
+  }
+  .dropdown-menu{
+    background-color: $gray-800 !important;
+    a{
+      color:black;
+    }
+  }
+}
+.commit-container{
+  margin-left:auto!important;
+  margin-right:auto!important;
+  .commit-line{
+    border-left:2px solid $light-text-clr;
+  }
+  .commit-date h1{
+    color:black;
+  }
+  .commit-list{
+    background-color: $gray-800 !important;
+    .col-md-2 h1{
+      background-color:$body-bg;
+    }
+  }
+  .copy-commit{
+    background-color:$body-bg!important;
+  }
+}
 .dataset-container {
   background-color: $gray-800 !important;
   .table {
@@ -39,6 +90,39 @@ $navbar-dark-toggler-border-color: $light-text-clr;
     th,
     td {
       padding: 0px !important;
+    }
+  }
+}
+
+.samplesContainer {
+  background-color: $gray-800 !important;
+  .table {
+    color: $light-text-clr;
+    th,
+    td {
+      padding:9px!important;
+      color: $light-text-clr;
+      font-size:1.25vw;
+      padding-bottom:10px;
+    }
+    th:first-child,td:first-child{
+      width:15.5%;
+    }
+    th:nth-child(2),th:nth-child(2){
+      width:28%;
+    }
+    th:nth-child(3),th:nth-child(3){
+      width:35.5%;
+    }
+    th:last-child,td:last-child{
+      width:20%;
+    }
+    thead tr{
+      border-bottom:1px solid #FFFFFF;
+    }
+    tr:not(:last-child){
+      border-bottom:1px solid #FFFFFF;
+      ;
     }
   }
 }
@@ -99,7 +183,9 @@ $navbar-dark-toggler-border-color: $light-text-clr;
   border-color: $white !important;
   color: $light-text-clr !important;
 }
-
+.form-search{
+  background-image:url('assets/searchDark.png');
+}
 // icons
 
 .alert-custom {
