@@ -6,6 +6,8 @@ import repoDark from "../assets/repo-light-theme-64.png";
 import { Link } from "react-router-dom";
 import { ThemeConsumer } from "../context/theme-context";
 import * as api from "../utils/API";
+import Dropdown from 'react-bootstrap/Dropdown';
+import { Form, Col, Row } from "react-bootstrap";
 
 class Arrayset extends Component {
   state = {
@@ -51,6 +53,28 @@ class Arrayset extends Component {
             </Breadcrumb>
             <div className="title-sec">
               <span className="title">ARRAYSETS</span>
+            </div>
+            <Dropdown className="select-branch">
+              <Dropdown.Toggle variant="success" id="dropdown-basic" className="bg-dark">
+                <b>Branch</b> : master
+              </Dropdown.Toggle>
+              <Dropdown.Menu>
+                <Dropdown.Item href="#/action-1">dev</Dropdown.Item>
+                <Dropdown.Item href="#/action-2">dev-2</Dropdown.Item>
+                <Dropdown.Item href="#/action-3">dev-3</Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>
+            <div className="search-sec col-md-12">
+              <Row>
+                <Col className="col-md-6">
+                  <Form.Control 
+                    className="form-search"
+                    type="text"
+                    placeholder="Search for a sample"
+                    aria-describedby="inputGroupPrepend"
+                  />
+                </Col>
+              </Row>
             </div>
             <div className="arrayset-container body-sec">
               <div className="row">
