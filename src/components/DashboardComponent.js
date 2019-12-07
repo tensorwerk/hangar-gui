@@ -43,7 +43,8 @@ class Dashboard extends Component {
             <div className="search-sec">
               <Row>
                 <Col>
-                  <Form.Control
+                  <Form.Control 
+                    class="form-search"
                     type="text"
                     placeholder="Search for a repository"
                     aria-describedby="inputGroupPrepend"
@@ -82,21 +83,26 @@ class Dashboard extends Component {
                           </Link>
 
                           <span className=" desc right">
-                            <OverlayTrigger
-                              key={2}
-                              placement="top"
-                              overlay={<Tooltip>Commits</Tooltip>}
+                            <Link
+                              className="link-name"
+                              to={`/dashboard/${item.repo_name}/commits`}
                             >
-                              <span className="">
-                                <img
-                                  src={isDarkMode ? commit : commitDark}
-                                  alt="commit"
-                                />
-                                <span className="commit">
-                                  {item.total_commit_count}
+                              <OverlayTrigger
+                                key={2}
+                                placement="top"
+                                overlay={<Tooltip>Commits</Tooltip>}
+                              >
+                                <span className="">
+                                  <img
+                                    src={isDarkMode ? commit : commitDark}
+                                    alt="commit"
+                                  />
+                                  <span className="commit">
+                                    {item.total_commit_count}
+                                  </span>
                                 </span>
-                              </span>
-                            </OverlayTrigger>
+                              </OverlayTrigger>
+                            </Link>
 
                             <OverlayTrigger
                               key={1}

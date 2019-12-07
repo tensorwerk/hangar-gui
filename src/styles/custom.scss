@@ -26,7 +26,7 @@
 }
 
 .wrapper-container {
-  padding: 3% 10%;
+  padding:3% 10%;
   .search-sec {
     padding: 1.5%;
     @extend %dark;
@@ -42,6 +42,7 @@
       margin-top: 3px;
     }
   }
+  
   .accordion {
     .card {
       border: none;
@@ -54,10 +55,215 @@
     }
   }
 }
-
-.dataset-container {
-  padding: 15px;
+.sideBar{
   @extend %dark;
+  .sampleImg{
+    display: block;
+    margin-left:auto;
+    margin-right:auto;
+    margin-top:27px;
+    max-width: 256px;
+    width:100%;
+  }
+  h1{
+    font-style: normal;
+    font-weight: normal;
+    font-size: 24px;
+    text-align:center;
+    margin-top:6.5px;
+    color:$white;
+    margin-bottom:24px;
+  }
+  h2,p{
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    float:left;
+    margin-bottom:10px;
+  }
+  h2{
+    width:48%;
+    margin-left:auto;
+    margin-right:4%;
+    color:#E3E5E8;
+    text-align:right;
+   
+  }
+  p{
+    width:48%;
+    margin-right:auto;
+  }
+}
+.sampleContainer{
+  padding: 0 0 0% 3%;
+  height:100vh;
+  .wrapper-row{
+    padding:3% 0 3% 0;
+    max-width:1139px;
+  }
+  .col-md-9{
+    padding-right:3%;
+  }
+}
+.select-branch{
+  margin-bottom:17px;
+  width:100%;
+  button{
+    width:100%;
+    max-width: 339px;
+    border:none;
+    color:#E3E5E8;
+    @extend %dark;
+    text-align: left;
+    padding-left:24px;
+    font-size:20px;
+  }
+  button:hover,button:focus{
+    @extend %dark;
+    opacity:0.9;
+    box-shadow:none!important;
+    color:#E3E5E8;
+    border:none;
+  }
+  .dropdown-menu{
+    min-width: 21rem;
+    @extend %dark;
+    a{
+      color:#E3E5E8;
+    }
+    a:hover{
+      background-color:transparent;
+      opacity:0.9;
+    }
+  }
+}
+.commit-container{
+  margin-left:auto;
+  margin-right:auto;
+  .col-1{
+    max-width:4.16666%;
+  }
+  .col-11{
+    max-width: 92%;
+    flex:0 0 92%;
+  }
+  .commit-icon{
+    max-width:36px;
+    display: block;
+    width:100%;
+  }
+  .commit-line{
+    width:1px;
+    border-left:2px solid #E3E5E8;
+
+    height:97%;
+    margin-top:9px;
+  }
+  .commit-date h1{
+    font-size:20px;
+    margin-top:6px;
+    color:#E3E5E8;
+    margin-bottom:0px;
+  }
+  .commit-list{
+    @extend %dark;
+    max-width:1332px;
+    padding:12px;
+    margin-top:9px;
+    &:last-child{
+      margin-bottom:40px;
+    }
+    h1{
+      font-size:18px;
+      padding:12px;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+      margin-bottom:0px;
+    }
+    .col-xl-2{
+      max-width:128px;
+      margin-left:auto;
+      cursor:pointer;
+      h1{
+        background-color:$body-bg;
+        text-align: center;
+      }
+    }
+    .col-xl-2:hover,.copy-commit:hover{
+      opacity: 0.8;
+    }
+    .copy-commit{
+      background-color:$body-bg;
+      padding:12px;
+      display:block;
+      max-width:48px;
+      margin-left:10px;
+      max-height:62px;
+      cursor:pointer;
+      .commit-clip{
+        max-width:20px;
+        display: block;
+        margin:auto;
+      }
+    }
+
+  }
+}
+.dataset-container {
+  padding:15px;
+  @extend %dark;
+  .table {
+    color: $white;
+    th,
+    td {
+      padding: 0px !important;
+    }
+  }
+}
+.samplesContainer {
+  @extend %dark;
+  .table {
+    color:#8E9196;
+    margin-bottom:0px;
+    th,
+    td {
+      padding:9px!important;
+      font-size:1.25vw;
+    }
+    th:first-child,td:first-child{
+      width:15.5%;
+    }
+    th:nth-child(2),th:nth-child(2){
+      width:28%;
+    }
+    th:nth-child(3),th:nth-child(3){
+      width:35.5%;
+    }
+    th:last-child,td:last-child{
+      width:20%;
+    }
+    thead tr{
+      border-bottom:1px solid #424955;
+    }
+    tr:hover{
+      background-color: rgba(0, 0, 0, 0.05);
+    }
+    tr:not(:last-child){
+      border-bottom:1px solid #424955;
+    }
+  }
+  .link-name{
+    font-size:24px;
+  }
+}
+.reducedSample{
+  th,td {
+    width:30%;
+    }
+    th:first-child,td:first-child,th:last-child,td:last-child{
+      width:20%;
+    }
 }
 .link-name {
   color: $white !important;
@@ -92,4 +298,5 @@
 
 .arrayset-container .col-md-6 {
   padding: 15px;
+  padding-top:0px;
 }

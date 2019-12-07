@@ -13,6 +13,7 @@ import FAQComponent from "./components/FAQComponent";
 import ArraysetComponent from "./components/ArraysetComponent";
 import DatasamplesComponent from "./components/DatasamplesComponent";
 import CreateRepoComponent from "./components/CreateRepoComponent";
+import CommitHistoryComponent from "./components/CommitHistoryComponent";
 
 import { ThemeProvider } from "./context/theme-context";
 
@@ -45,6 +46,11 @@ function App() {
               exact
               path="/createrepository"
               component={CreateRepoComponent}
+            />
+            <Route
+              exact
+              path="/dashboard/:repoId/commits"
+              component={CommitHistoryComponent}
             />
             <Redirect from="/" to="/home" />
           </Switch>
